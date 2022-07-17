@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     git 
 RUN apt-get install wget gcc g++ -y
 RUN apt-get install libsm6 libxext6 -y
-RUN apt-get update && apt-get install ffmpeg -y
+RUN apt install -y libgl1-mesa-glx
+RUN apt-get install libglib2.0-0 -y
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
@@ -17,6 +18,7 @@ RUN conda init && conda config --set always_yes yes --set changeps1 no
 RUN conda --version
 RUN pip install pycocotools
 RUN pip install opencv-python
+RUN pip install opencv-contrib-python -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install git+https://github.com/facebookresearch/fvcore
 RUN pip install cython
 RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
@@ -26,5 +28,3 @@ RUN pip install jupyterlab
 RUN jupyter nbextension enable --py widgetsnbextension
 ENV JUPYTER_TOKEN=123456
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser"]
-
-
