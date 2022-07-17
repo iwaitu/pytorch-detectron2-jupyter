@@ -17,6 +17,10 @@ RUN conda init && conda config --set always_yes yes --set changeps1 no
 RUN conda --version
 RUN pip install pycocotools
 RUN pip install opencv-python
+RUN pip install git+https://github.com/facebookresearch/fvcore
+RUN pip install cython
+RUN pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+RUN python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 RUN pip install ipywidgets
 RUN pip install jupyterlab
 RUN jupyter nbextension enable --py widgetsnbextension
