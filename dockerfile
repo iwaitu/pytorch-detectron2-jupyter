@@ -9,6 +9,7 @@ RUN apt-get install wget gcc g++ -y
 RUN apt-get install libsm6 libxext6 -y
 RUN apt install -y libgl1-mesa-glx
 RUN apt-get install libglib2.0-0 -y
+RUN apt-get install zip -y
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
